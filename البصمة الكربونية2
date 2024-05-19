@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>اختبار قياس البصمة الكربونية</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center; /* Centers the container horizontally */
+            align-items: flex-start; /* Aligns the container to the top */
+            height: 100vh; /* Full viewport height */
+            background-color: #f0f0f0; /* Light background color for contrast */
+        }
+        .form-container {
+            background-color: #fff; /* White background for the form */
+            padding: 20px;
+            border-radius: 8px; /* Rounded corners */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Light shadow for depth */
+            text-align: center; /* Centers text inside the container */
+            max-width: 400px; /* Sets a maximum width for the container */
+            width: 100%; /* Ensures the container takes full width up to max-width */
+            box-sizing: border-box; /* Ensures padding is included in the width */
+            margin-top: 50px; /* Adds some space at the top */
+        }
+        .question-container {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+            text-align: left; /* Aligns text to the left for better readability */
+        }
+        input[type="text"], input[type="radio"] {
+            margin-top: 5px;
+        }
+        button {
+            margin-top: 20px; /* Adds space above the button */
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer; /* Pointer cursor on hover */
+        }
+        button:hover {
+            background-color: #0056b3; /* Darker shade on hover */
+        }
+        #result {
+            margin-top: 20px; /* Adds space above the result */
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h1>اختبار قياس البصمة الكربونية</h1>
+        <form id="quizForm">
+            <div class="question-container">
+                <label for="name">الاسم</label>
+                <input type="text" id="name" name="name" placeholder="اكتبي اسمك">
+            </div>
+
+            <div class="question-container">
+                <p>عادة، هل تقوم بترك المصابيح مضاءة عند الخروج من المنزل؟ أو تركها مضاءة في حال عدم وجودك داخل الغرفة؟</p>
+                <label>
+                    <input type="radio" name="q1" value="1" data-score="1"> لا،لأني أحرص على ترشيد استهلاك الكهرباء
+                </label>
+                <label>
+                    <input type="radio" name="q1" value="0" data-score="0"> نعم
+                </label>
+            </div>
+
+            <div class="question-container">
+                <p>عادة، هل تحرص على وجود بطاقة كفاءة الطاقة المقدمة من الهيئة السعودية للمواصفات والمقاييس والجودة (SASO)، قبل شراء المنتجات والأجهزة الكهربائية؟</p>
+                <label>
+                    <input type="radio" name="q2" value="1" data-score="1"> نعم, لاني احرص على ترشيد استخدام الكهرباء
+                </label>
+                <label>
+                    <input type="radio" name="q2" value="0" data-score="0"> لا
+                </label>
+            </div>
+
+            <div class="question-container">
+                <p>بشكل شخصي، أي من وسائل النقل الآتية استخدمت خلال الشهر الماضي؟</p>
+                <label>
+                    <input type="radio" name="q3" value="2" data-score="2"> الباص
+                </label>
+                <label>
+                    <input type="radio" name="q3" value="2" data-score="2"> الدراجة الهوائية
+                </label>
+                <label>
+                    <input type="radio" name="q3" value="1" data-score="1"> السيارة
+                </label>
+            </div>
+
+            <div class="question-container">
+                <p>ماهو نوع المواصلات</p>
+                <label>
+                    <input type="radio" name="q4" value="0" data-score="0"> ديزل
+                </label>
+                <label>
+                    <input type="radio" name="q4" value="0" data-score="0"> بنزين
+                </label>
+                <label>
+                    <input type="radio" name="q4" value="1" data-score="1"> كهرباء
+                </label>
+            </div>
+
+            <div class="question-container">
+                <p>قدر المسافة التي قطعتها الشهر الماضي بالكيلومتر</p>
+                <label>
+                    <input type="radio" name="q5" value="2" data-score="2"> قليله (اقل من 80)
+                </label>
+                <label>
+                    <input type="radio" name="q5" value="1" data-score="1"> متوسطة (من 80 إلى 200)
+                </label>
+                <label>
+                    <input type="radio" name="q5" value="0" data-score="0"> كبيره (من 200 إلى اكثر)
+                </label>
+            </div>
+
+            <div class="question-container">
+                <p>هل سافرت خلال رحلات جوية</p>
+                <label>
+                    <input type="radio" name="q6" value="1" data-score="1"> لا
+                </label>
+                <label>
+                    <input type="radio" name="q6" value="0" data-score="0"> نعم
+                </label>
+            </div>
+
+            <div class="question-container">
+                <p>كم تقدر مسافة الرحلة بالكيلو متر</p>
+                <label>
+                    <input type="radio" name="q7" value="2" data-score="2"> قصيرة (من 500 إلى 1500 )
+                </label>
+                <label>
+                    <input type="radio" name="q7" value="1" data-score="1"> متوسطة (من 1500 إلى 4000 )
+                </label>
+                <label>
+                    <input type="radio" name="q7" value="0" data-score="0"> كبيرة(من 4000 إلى اكثر )
+                </label>
+            </div>
+
+            <div class="question-container">
+                <p>من معدل إنفاقك الشهري على المواد الغذائية، هل تنفق جزء منه لشراء المنتجات المحلية؟</p>
+                <label>
+                    <input type="radio" name="q8" value="2" data-score="2"> نعم كثيراً
+                </label>
+                <label>
+                    <input type="radio" name="q8" value="1" data-score="1"> احياناً
+                </label>
+                <label>
+                    <input type="radio" name="q8" value="0" data-score="0"> لا ابداً
+                </label>
+            </div>
+
+            <div class="question-container">
+                <p>كيف تصف نظامك الغذائي في الشهر الماضي؟</p>
+                <label>
+                    <input type="radio" name="q9" value="1" data-score="1"> اللحوم هي مصدر البروتين في نظامي الغذائي وتناولتها بكمية أكبر من باقي العناصر الغذائية.
+                </label>
+                <label>
+                    <input type="radio" name="q9" value="2" data-score="2"> متوازن العناصر الغذائية
+                </label>
+                <label>
+                    <input type="radio" name="q9" value="1" data-score="1"> اعتمدت على البروتين النباتي كمصدر البروتين في نظامي الغذائي، بالإضافة إلى الخضروات
+                </label>
+            </div>
+
+            <div class="question-container">
+                <p>بالنسبة لوجباتك؟</p>
+                <label>
+                    <input type="radio" name="q10" value="2" data-score="2"> أقوم بتحضيرها في المنزل
+                </label>
+                <label>
+                    <input type="radio" name="q10" value="1" data-score="1"> أتناول وجبات جاهزة
+                </label>
+            </div>
+
+            <div class="question-container">
+                <p>كم كان معدل إنفاقك في شراء الإلكترونيات (أجهزة الحاسوب، الهواتف الذكية، أجهزة التلفاز وغيرها) خلال السنة الماضية؟ بالريال السعودي</p>
+                <label>
+                    <input type="radio" name="q11" value="2" data-score="2"> قليله (اقل من 500)
+                </label>
+                <label>
+                    <input type="radio" name="q11" value="1" data-score="1"> متوسطة (من 500 إلى 8000)
+                </label>
+                <label>
+                    <input type="radio" name="q11" value="0" data-score="0"> كبيرة(من 8000 إلى اكثر )
+                </label>
+            </div>
+
+            <div class="question-container">
+                <p>خلال السنة الماضية، هل قمت بشراء بضائع ومنتجات مُعاد تدويرها؟</p>
+                <label>
+                    <input type="radio" name="q12" value="0" data-score="0"> ابداً
+                </label>
+                <label>
+                    <input type="radio" name="q12" value="1" data-score="1"> احياناً
+                </label>
+                <label>
+                    <input type="radio" name="q12" value="2" data-score="2"> دائماً
+                </label>
+            </div>
+
+            <button type="button" onclick="calculateTotalAndGrade()">النتيجة</button>
+            <div id="result"></div>
+        </form>
+    </div>
+    <script>
+        function calculateTotalAndGrade() {
+            const form = document.getElementById('quizForm');
+            let totalScore = 0;
+            const options = form.querySelectorAll('input[type="radio"]:checked');
+
+            options.forEach(option => {
+                totalScore += parseFloat(option.getAttribute('data-score'));
+            });
+
+            const result = document.getElementById('result');
+            let grade = '';
+
+            if (totalScore >= 18) {
+                grade = 'A';
+            } else if (totalScore >= 12) {
+                grade = 'B';
+            } else if (totalScore >= 6) {
+                grade = 'C';
+            } else {
+                grade = 'D';
+            }
+
+            result.innerHTML = 'النتيجة الكلية: ' + totalScore + '<br>التقدير: ' + grade;
+        }
+    </script>
+</body>
+</html>
